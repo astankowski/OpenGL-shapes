@@ -98,7 +98,12 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/){
         switch (key){
             case GLFW_KEY_ESCAPE:
                 glfwSetWindowShouldClose(window_, GLFW_TRUE);
-            break;
+                break;
+            case GLFW_KEY_SPACE:
+                glClearColor(0.0f, 0.0f, 0.0f, 1.0f );
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                filledStar_.Initialize();
+                break;
             default:
             break;
         }
@@ -109,6 +114,7 @@ void Window::Run(void){
     while (!glfwWindowShouldClose(window_)){
         glClear(GL_COLOR_BUFFER_BIT /*| GL_DEPTH_BUFFER_BIT*/);
         triangle_.Draw(program_);
+        filledStar_.Draw(program_);
         glfwSwapBuffers(window_);
         glfwWaitEvents();
     }

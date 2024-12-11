@@ -6,6 +6,7 @@
 #include <GLFW/glfw3.h>
 
 #include "triangle.h"
+#include "filledStar.h"
 #include "program.h"
 
 class Window{
@@ -23,6 +24,7 @@ class Window{
     GLFWwindow* window_;
 
     Triangle triangle_;
+    FilledStar filledStar_;
 
     Program program_;
 
