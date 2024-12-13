@@ -6,6 +6,8 @@
     g++ circle.o filledCircle.o filledStar.o glerror.o main.o program.o star.o triangle.o window.o -o triangle  -lX11 -lglfw -lGL -lGLU -lGLEW -lm
 ```
 
+![image](https://github.com/user-attachments/assets/6296ea2f-03ef-452c-8dc3-c481f8b76007)
+
 ```bash
     $ make clean 
     rm -f triangle circle.o filledCircle.o filledStar.o glerror.o main.o program.o star.o triangle.o window.o
