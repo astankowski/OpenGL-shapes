@@ -7,6 +7,10 @@
 
 #include "triangle.h"
 #include "filledStar.h"
+#include "star.h"
+#include "circle.h"
+#include "filledCircle.h"
+
 #include "program.h"
 
 class Window{
@@ -20,11 +24,15 @@ class Window{
  private:
     int width_;
     int height_;
+    int currObject = 0;
     const char* title_;
     GLFWwindow* window_;
 
     Triangle triangle_;
     FilledStar filledStar_;
+    Star star_;
+    FilledCircle filledCircle_;
+    Circle circle_;
 
     Program program_;
 

@@ -1,10 +1,9 @@
-#include "filledStar.h"
+#include "star.h"
 
 #include <GL/glew.h>
 
-void FilledStar::Initialize(){
+void Star::Initialize(){
     const GLfloat kVertices[] = {
-         0.0f,  0.0f, 0.0f, 1.0f,
          0.0f,  0.8f, 0.0f, 1.0f,
          0.15f,  0.2f, 0.0f, 1.0f,
          0.7f,  0.1f, 0.0f, 1.0f,
@@ -15,12 +14,9 @@ void FilledStar::Initialize(){
         -0.25f, -0.15f, 0.0f, 1.0f,
         -0.7f,  0.1f, 0.0f, 1.0f,
         -0.15f,  0.2f, 0.0f, 1.0f,
-         0.0f,  0.8f, 0.0f, 1.0f,
     };
 
     const GLfloat kColors[] = {
-        0.2f, 0.1f, 0.1f, 1.0f,
-        0.2f, 0.1f, 0.1f, 1.0f,
         0.2f, 0.1f, 0.1f, 1.0f,
         0.2f, 0.1f, 0.1f, 1.0f,
         0.2f, 0.1f, 0.1f, 1.0f,
@@ -54,7 +50,7 @@ void FilledStar::Initialize(){
 
 }
 
-FilledStar::~FilledStar(){
+Star::~Star(){
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(0);
 
@@ -67,12 +63,12 @@ FilledStar::~FilledStar(){
     glDeleteVertexArrays(1, &vao_);
 }
 
-void FilledStar::Draw(const Program &program){
+void Star::Draw(const Program &program){
 
     glUseProgram(program);
     glBindVertexArray(vao_);
 
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 12);
+    glDrawArrays(GL_LINE_LOOP, 0, 10);
 
     glBindVertexArray(0);
     glUseProgram(0);

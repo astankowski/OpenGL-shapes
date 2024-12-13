@@ -81,6 +81,10 @@ void Window::InitGlewOrDie(){
 
 void Window::InitModels(){
     triangle_.Initialize();
+    filledStar_.Initialize();
+    star_.Initialize();
+    filledCircle_.Initialize();
+    circle_.Initialize();
 }
 
 void Window::InitPrograms(){
@@ -100,9 +104,7 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/){
                 glfwSetWindowShouldClose(window_, GLFW_TRUE);
                 break;
             case GLFW_KEY_SPACE:
-                glClearColor(0.0f, 0.0f, 0.0f, 1.0f );
-                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-                filledStar_.Initialize();
+                currObject = (currObject + 1) % 5;
                 break;
             default:
             break;
@@ -113,8 +115,28 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/){
 void Window::Run(void){
     while (!glfwWindowShouldClose(window_)){
         glClear(GL_COLOR_BUFFER_BIT /*| GL_DEPTH_BUFFER_BIT*/);
-        triangle_.Draw(program_);
-        filledStar_.Draw(program_);
+        
+        switch (currObject)
+        {
+        case 0:
+            triangle_.Draw(program_);
+            break;
+        case 1:
+            filledStar_.Draw(program_);
+            break;
+        case 2:
+            star_.Draw(program_);
+            break;
+        case 3:
+            filledCircle_.Draw(program_);
+            break;
+        case 4:
+            circle_.Draw(program_);
+            break;
+        default:
+            break;
+        }
+
         glfwSwapBuffers(window_);
         glfwWaitEvents();
     }
